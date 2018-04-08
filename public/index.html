@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BlockChain - Motherchain</title>
+  </head>
+  <body>
+<h1>Hello Dave from the server</h1>
+<p>Love love love blockchain</p>
+<h1 id="response">No response</h1>
+<h1 id="response2">No response</h1>
+
+<button onclick="contactServer()" type="button" name="button">Contact webserver</button>
+
+<script type="text/javascript">
+function contactServer() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var name = JSON.parse(this.responseText);
+   document.getElementById("response").innerHTML = this.responseText;
+   var accounts = JSON.parse(this.responseText);
+   document.getElementById("response2").innerHTML = accounts[0];
+  //document.getElementById("response").innerHTML = name.firstName + ' ' + name.lastName;
+
+  }
+};
+xhttp.open("GET", "ajax_response", true);
+xhttp.send();
+}
+</script>
+  </body>
+</html>
